@@ -1,9 +1,9 @@
 /**
  * Garpix Ltd.
- * (Kuznetsov Aleksey, Burenkov Anatoly)
+ * Contributors: Kuznetsov Aleksey, Burenkov Anatoly
  * Site: http://garpix.com
  * Email: info@garpix.com
- * Version: 1.0.2
+ * Version: 1.0.3
  * Created: 2016-02-16
  */
 
@@ -76,8 +76,12 @@
 
         $(document).on('click', 'a:not([href^=blob])', function(e) {
             var url = $(e.target).closest('a').attr('href');
-            route(url, true);
-            return false;
+            var hostAdress = location.hostname;
+            var hrefUrl = url.split('/');
+            if(hrefUrl[2] === undefined || hostAdress === hrefUrl[2]) {
+                route(url, true);
+                return false;
+            }
         });
 
         window.onpopstate = function(event) {

@@ -66,6 +66,9 @@ http://demo.garpix.com/jquery.easyajaxsite/index.html
 Changelog
 =========
 
+1.0.3
+- Fixed bug with external resources.
+
 1.0.2
 - Added option "scriptsLoadAfter".
 
