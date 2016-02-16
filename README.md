@@ -24,7 +24,7 @@ http://demo.garpix.com/jquery.easyajaxsite/index.html
 Использование
 -------------
 
-Подключите файл jquery и jquery.easyajaxsite.js на вашем сайте:
+Подключите jQuery и jquery.easyajaxsite.js на вашем сайте:
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="jquery.easyajaxsite.js"></script>
