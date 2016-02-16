@@ -40,6 +40,7 @@ http://demo.garpix.com/jquery.easyajaxsite/index.html
         	onError: function() { alert('Loading page fails.'); return true; },
         	animation: 'fade',
             animationDuration: 500,
+            scriptsLoadAfter: 1000
     	});
     </script>
 
@@ -55,6 +56,7 @@ http://demo.garpix.com/jquery.easyajaxsite/index.html
     onError - функция, которая выполнится при ошибке загрузки контента.
     animation - анимация перехода между страниами. По умолчанию "none". Варианты: "fade", "none".
     animationDuration - время в миллисекундах, за которое будет скрыт прошлый блок и показан новый.
+    scriptsLoadAfter - через сколько миллисекунд подгружать скрипты. По умолчанию равно 1 секунде.
 
 Поддержка
 ---------
@@ -63,6 +65,9 @@ http://demo.garpix.com/jquery.easyajaxsite/index.html
 
 Changelog
 =========
+
+1.0.2
+- Added option "scriptsLoadAfter".
 
 1.0.1
 - Fixed bug with different jQuery version.

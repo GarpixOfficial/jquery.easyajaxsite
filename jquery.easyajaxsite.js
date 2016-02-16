@@ -1,10 +1,10 @@
 /**
  * Garpix Ltd.
- * (Burenkov Anatoly, Kuznetsov Aleksey)
+ * (Kuznetsov Aleksey, Burenkov Anatoly)
  * Site: http://garpix.com
  * Email: info@garpix.com
- * Version: 1.0.1
- * Date: 2016-02-16
+ * Version: 1.0.2
+ * Created: 2016-02-16
  */
 
 (function($) {
@@ -16,7 +16,8 @@
             'onAfter': function(data) { return true; },
             'onError': function() { alert('Loading page fails.'); return true; },
             'animation': 'none', // fade, none
-            'animationDuration': 500
+            'animationDuration': 500,
+            'scriptsLoadAfter': 1000
         }, options);
 
         var fixedFind = function(data, selector) {
@@ -50,10 +51,12 @@
             if (needPushState) {
                 history.pushState(url, title, url);
             }
-            for (i=0, len=settings.reloadScripts.length; i < len; i++) {
-                var scriptUrl = settings.reloadScripts[i];
-                $.getScript(scriptUrl);
-            }
+            setTimeout(function() {
+                for (i=0, len=settings.reloadScripts.length; i < len; i++) {
+                    var scriptUrl = settings.reloadScripts[i];
+                    $.getScript(scriptUrl);
+                }
+            }, settings.scriptsLoadAfter);
             document.title = title;
             settings.onAfter(data);
         };
