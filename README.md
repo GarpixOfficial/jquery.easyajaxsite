@@ -12,20 +12,21 @@ Easy Ajax Site (Русский)
 
 Этот плагин позволяет очень просто и быстро организовать ajax-сайт.
 Предназначен в первую очередь для новичков в веб, т.к. организация ajax-сайта таким способом использует лишние ресурсы. С другой стороны, если вам необходимо сделать это в кратчайшие сроки и без лишней головной боли, то это будет лучшим решением. Плагин можно использовать на любой CMS или движке, независимо от бекенда.
+Для использования плагина требуется jQuery.
 
 Демо
 ----
 
 Смотри на тестовом сайте. В данном случае, в качестве бекенда используется простой html.
 
-http://garpix.github.io/easy_ajax_site_demo
+http://demo.garpix.com/jquery.easyajaxsite/index.html
 
 Использование
 -------------
 
-Подключите файл easy_ajax_site.js на вашем сайте:
+Подключите файл jquery.easyajaxsite.js на вашем сайте:
 
-    <script src="easy_ajax_site.js"></script>
+    <script src="jquery.easyajaxsite.js"></script>
 
 Затем, после подключения, вызовите следующую функцию, например, так:
 
@@ -33,9 +34,10 @@ http://garpix.github.io/easy_ajax_site_demo
         easyAjaxSite({
         	updateHtml: ['.content1', '#content2'],
         	reloadScripts: ['/js/myscript.js']
-        	before: function() { return true; },
-        	after: function() { return true; },
-        	animation: 'fade' // none,
+        	onBefore: function(url) { return true; },
+        	onAfter: function(data) { return true; },
+        	onError: function() { alert('Loading page fails.'); return true; },
+        	animation: 'fade',
             animationDuration: 500,
     	});
     </script>
@@ -47,9 +49,10 @@ http://garpix.github.io/easy_ajax_site_demo
 
     updateHtml - массив селекторов, по которым будут выбираться блоки, которые необходимо заменять. Например, ".content1" выберет <div class="content1">...</div>. По умолчанию - ["#content"].
     reloadScripts - загружает и выполняет файл со скриптами повторно. По умолчанию отсутствует.
-    before - функция, которая выполнится перед переходом на другую страницу. По умолчанию отсутствует.
-    after - функция, которая выполнится после перехода на другую страницу. По умолчанию отсутствует.
-    animation - анимация перехода между страниами. По умолчанию "none".
+    onBefore - функция, которая выполнится перед переходом на другую страницу. По умолчанию отсутствует. Если здесь вернуть false, то загрузка выполнена не будет.
+    onAfter - функция, которая выполнится после перехода на другую страницу. По умолчанию отсутствует.
+    onError - функция, которая выполнится при ошибке загрузки контента.
+    animation - анимация перехода между страниами. По умолчанию "none". Варианты: "fade", "none".
     animationDuration - время в миллисекундах, за которое будет скрыт прошлый блок и показан новый.
 
 Поддержка
