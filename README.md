@@ -60,3 +60,12 @@ http://demo.garpix.com/jquery.easyajaxsite/index.html
 ---------
 
 Если вы нашли ошибку или у вас есть предложение по усовершенствованию плагина, пишите на почту info@garpix.com.
+
+Changelog
+=========
+
+1.0.1
+- Fixed bug with different jQuery version.
+
+1.0.0
+- Init.

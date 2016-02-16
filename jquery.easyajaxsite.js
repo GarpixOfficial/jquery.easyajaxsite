@@ -3,7 +3,7 @@
  * (Burenkov Anatoly, Kuznetsov Aleksey)
  * Site: http://garpix.com
  * Email: info@garpix.com
- * Version: 1.0.0
+ * Version: 1.0.1
  * Date: 2016-02-16
  */
 
@@ -19,9 +19,18 @@
             'animationDuration': 500
         }, options);
 
+        var fixedFind = function(data, selector) {
+            var $elem_find = $(data).find(selector);
+            if ($elem_find.length === 0) {
+                return $(data).filter(selector);
+            } else {
+                return $elem_find;
+            }
+        };
+
         var animFadeOutIn = function(selector, data) {
             $(selector).fadeOut(settings.animationDuration, function() {
-                $(selector).html($(data).filter(selector).html());
+                $(selector).html(fixedFind(data, selector).html());
                 $(selector).fadeIn(settings.animationDuration);
             });
         };
@@ -34,7 +43,7 @@
                         animFadeOutIn(htmlSelector, data);
                         break;
                     default:
-                        $(htmlSelector).html($(data).filter(htmlSelector).html());
+                        $(htmlSelector).html(fixedFind(data, htmlSelector).html());
                 }
             }
             var title = $(data).filter('title').text();
