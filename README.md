@@ -34,7 +34,7 @@ http://demo.garpix.com/jquery.easyajaxsite/index.html
     <script>
         easyAjaxSite({
         	updateHtml: ['.content1', '#content2'],
-        	reloadScripts: ['/js/myscript.js']
+        	reloadScripts: ['/js/myscript.js'],
         	onBefore: function(url) { return true; },
         	onAfter: function(data) { return true; },
         	onError: function() { alert('Loading page fails.'); return true; },
